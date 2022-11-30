@@ -36,48 +36,36 @@ struct ListNode {
 class Solution {
 
 public:
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        ListNode* list_ptr = list1;
 
-        // if list 1 is empty, return list 2
-        if(list1->val == NULL){
-            return list2;
-        // if list 2 is empty, return list 1
-        }else if(list2->val == NULL){
-            return list1;
-        // if both lists are empty, return []
-        }else if(list1->val == NULL && list2 == NULL){
-            return list1;
+        if(list1->val > list2->val){
+            list_ptr = list2;
         }else{
-            // repeat listX[i].next = listY[i] until next == null
-
-            ListNode* ptr = list1;
-            if(list1->val > list2->val){
-                ptr = list2;
-            }else{
-                list1 = list1->next;
-            }
-
-            ListNode* current = ptr;
-            while(list1 && list2){
-                if(list1->val < list2->val){
-                    current->next = list1;
-                    list1 = list1->next;
-                }else{
-                    current->next = list2;
-                    list2 = list2->next;
-                }
-                current = current->next;
-            }
-
-            // If end of either list is reached before the other, add the rest to the list
-            if(!list1){
-                current->next = list2;
-            }else{
-                current->next = list1;
-            }
-
-            return ptr;
+            list1 = list1->next;
         }
+        ListNode* result = list_ptr;
+
+        // Step through each list, adding each value to the result in ascending order
+        while(list1 && list2){
+            if(list1->val < list2->val){
+                result->next = list1;
+                list1 = list1->next;
+            }else{
+                result->next = list2;
+                list2 = list2->next;
+            }
+            result = result->next;
+        }
+
+        // If one list is shorter than the other, append the remaining items to result.
+        if(!list1){
+            result->next = list2;
+        }else{
+            result->next = list1;
+        }
+
+       return list_ptr;
     }
 
 };
