@@ -6,12 +6,12 @@ along with notes on the respective subject.<br>
 
 ## Topics Covered:
 ### Data Structures
+* Arrays and Hashing
 * Linked Lists
 * Trees, Tries, and Graphs
 * Stacks and Queues
 * Heaps
 * Vectors / ArrayLists
-* Hash Tables
 
 ### Algorithms
 * Breadth-First Search
