@@ -38,13 +38,11 @@ public:
         // a hash map
         unordered_map<char, int> tmp;
         for(int i=0; i<s.size(); i++){
-            // s[i] not in map, insert it
             tmp[s[i]]++;
         }
 
         // Iterate over chars in new word
         for(int i=0; i < t.size(); i++){
-            // Check if value is > 0
             if(tmp[t[i]] > 0){
                 tmp[t[i]]--;
             }else{
